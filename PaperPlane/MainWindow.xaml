@@ -1,0 +1,38 @@
+﻿<Window x:Class="PaperPlane.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Paper Plane" Height="350" Width="525">
+    <Grid>
+        <DockPanel Height="30" Name="toolbarDock" VerticalAlignment="Top">
+            <ToolBarTray DockPanel.Dock="Top">
+                <ToolBar>
+                    <Button Height="25" HorizontalAlignment="Left" Name="saveButton" VerticalAlignment="Top" Width="25" Click="Save">
+                        <Image Width="23" Source="{StaticResource SaveImg}" Stretch="Uniform"  StretchDirection="DownOnly" />
+                    </Button>
+                    <Button Height="25" HorizontalAlignment="Left" Name="loadButton" VerticalAlignment="Top" Width="25" Click="Load">
+                        <Image Width="23" Source="{StaticResource LoadImg}" Stretch="Uniform"  StretchDirection="DownOnly" />
+                    </Button>
+                    <Button Height="25" HorizontalAlignment="Left" Name="addButton" VerticalAlignment="Top" Width="25" Click="Add">
+                        <Image Width="23" Source="{StaticResource AddImg}" Stretch="Uniform"  StretchDirection="DownOnly" />
+                    </Button>
+                    <Button Height="25" HorizontalAlignment="Left" Name="checkButton" VerticalAlignment="Top" Width="25" Click="Check">
+                        <Image Width="23" Source="{StaticResource CheckImg}" Stretch="Uniform"  StretchDirection="DownOnly" />
+                    </Button>
+                    <Button Height="25" HorizontalAlignment="Left" Name="flyButton" VerticalAlignment="Top" Width="25" Click="Fly">
+                        <Image Width="23" Source="{StaticResource FlyImg}" Stretch="Uniform"  StretchDirection="DownOnly" />
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
+
+            <ToolBar Height="26" Name="toolbar" Width="200" />
+        </DockPanel>
+        <DataGrid  AutoGenerateColumns="False" Margin="0,30,0,29" Name="data" ItemsSource="{Binding Path=Paper, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, Mode=TwoWay}" CanUserReorderColumns="False" CanUserResizeColumns="True" 
+          CanUserResizeRows="False" CanUserSortColumns="True" DataContext="{Binding}" FrozenColumnCount="1" ColumnWidth="*"  MinColumnWidth="200" IsTextSearchEnabled="True" AlternatingRowBackground="#02646464" AlternationCount="1" ColumnHeaderStyle="{Binding}" BorderBrush="#00000000" FontSize="14">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="0.5*" />
+                <DataGridTextColumn Header="Tags" Binding="{Binding Tags}" Width="500" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <StatusBar Height="23" Name="statusBar1" VerticalAlignment="Bottom" />
+    </Grid>
+</Window>
